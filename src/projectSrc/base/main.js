@@ -2,9 +2,20 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from '../../comm/router/index'
+import router from 'comm/router/index'
+import DeployPramas from 'comm/mixin/constant/DeployPramas'
+// import
 
-Vue.config.productionTip = false
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
+import 'comm/assets/css/index.css';
+import './assets/css/index.css';
+
+Vue.config.productionTip = false;
+
+document.title = DeployPramas[process.env.BRANCH_ENV].name + '后台管理系统';
 
 /* eslint-disable no-new */
 new Vue({
@@ -12,4 +23,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});

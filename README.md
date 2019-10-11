@@ -34,22 +34,21 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## 机构说明
 
-``` 
+```
 src
 	comm		// 公共文件
 		assets
-			css		
-			images	
+			css
+			images
 			js
-				constant	// 存放常量
-		components	
+		components
 		mixin
 		router
 		service
 		store
 		view
 	projectSrc	// 项目对应文件
-		assets		
+		assets
 			css
 			images
 		view
@@ -67,7 +66,7 @@ webpack.base.conf.js
 	根据变量及结构修改entry，动态找到main.js
 config.js
 	根据变量及结构修改build,动态打包到相应项目文件
-	
+
 
 
 
