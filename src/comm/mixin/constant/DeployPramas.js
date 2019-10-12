@@ -1,5 +1,5 @@
 export default {
   'base':{
-    name:'FlowerY21'
+    ProgramName:'FlowerY21'
   }
 }

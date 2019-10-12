@@ -15,7 +15,7 @@ import './assets/css/index.css';
 
 Vue.config.productionTip = false;
 
-document.title = DeployPramas[process.env.BRANCH_ENV].name + '后台管理系统';
+document.title = DeployPramas[process.env.BRANCH_ENV].ProgramName + '后台管理系统';
 
 /* eslint-disable no-new */
 new Vue({

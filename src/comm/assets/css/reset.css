@@ -1,0 +1,103 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+}
+
+table {
+  brder-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom */
+
+a {
+  color: #7e8c8d;
+  -webkit-backface-visibility: hidden;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body, html {
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
+  -webkit-user-select: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #ededed !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  background-color: transparent;
+  background-image: none;
+  transition: background-color 50000s ease-in-out 0s;
+  /* 背景色透明  生效时长  过渡效果  启用时延迟的时间  */
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  display: block;
+  height: 0.5rem;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  min-height: 0.5rem;
+  font-size: 0.3rem;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+}
+
+::-webkit-scrollbar-track-piece {
+  width:10px;
+  background-color:#f9f9f9;
+}
+::-webkit-scrollbar {
+  width:8px;
+  height:6px;
+}
+::-webkit-scrollbar-thumb {
+  opacity: 0;
+  height:50px;
+  background-color:rgba(144,147,153,.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background:rgba(144,147,153,.5);
+}
+::selection {
+  background: #000;
+  color: #fff;
+}
