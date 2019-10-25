@@ -1,3 +1,5 @@
+import {getFormKeys} from "comm/assets/js/common-utils";
+import SubmitText from "./constant/SubmitText";
 
 let loading;
 const dialogMethods = {
@@ -131,6 +133,60 @@ const loadMethods = Object.assign({}, dialogMethods, {
   },
 });
 
+const submitMethods = Object.assign({}, dialogMethods, validators, {
+  doSubmit(func, data, onSuccess, text = new SubmitText({}), onFail) {
+    this.showLoading(text.loadingText);
+    const startTime = new Date().getTime();
+    func(data).then((data) => {
+      setTimeout(()=>{
+        this.hideLoading();
+        text.successText && this.showSuccess(text.successText);
+        onSuccess && onSuccess(data);
+      },500 - new Date().getTime() + startTime);
+    }, (error) => {
+      setTimeout(()=>{
+        this.hideLoading();
+        text.failTitle = typeof text.failTitle == "function" ? text.failTitle(error) : text.failTitle;
+        text.failText = typeof text.failText == "function" ? text.failText(error) : text.failText;
+        this.showError(text.failTitle, text.failText || error.message);
+        onFail && onFail(error.resp);
+      },500 - new Date().getTime() + startTime);
+    })
+  },
+  doValidAndSubmit(formName, func, data, onSuccess, text, onFail) {
+    this.doValid(formName).then((a) => {
+      this.doSubmit(func, data, onSuccess, text, onFail)
+    });
+  },
+  doValid(formName) {
+    return this.doValidItems(formName, getFormKeys(this.$refs[formName].rules));
+    // 用整体验证会将required动态获取的字段也包括在内进行验证
+    /*return new Promise((resolve, reject) => {
+        this.$refs[formName].validate((valid) => {
+            if (valid) {
+                return resolve()
+            }
+            this.doValidItems(formName, getFormKeys(this.$refs[formName].rules));
+        })
+    });*/
+  },
+  doValidItems(formName, keys) {
+    return new Promise((resolve, reject) => {
+      const messageArr = [];
+      keys = typeof keys == "string" ? keys.split(",") : keys;
+      this.$refs[formName].validateField(keys, (messsage) => {
+        messsage && messageArr.push(messsage);
+      });
+      if (messageArr.length == 0) {
+        return resolve()
+      }
+      this.showError("校验失败", messageArr.join("</br>"), true)
+      console.log("校验失败", messageArr.join(","));
+      // reject(messageArr); 加了会报Uncaught (in promise)
+    });
+  }
+});
+
 export const dialogMixin = {
   methods: dialogMethods
 };
@@ -141,4 +197,8 @@ export const validatorsMixin = {
 
 export const loadMixin = {
   methods: loadMethods
+};
+
+export const submitMixin = {
+  methods: submitMethods
 };

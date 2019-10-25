@@ -44,3 +44,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.overWidth{
+  width: 100%;
+}
