@@ -12,7 +12,7 @@
 }
 
 .el-aside {
-  width: 260px !important;
+  width: auto !important;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
@@ -26,4 +26,22 @@
 
 .el-form {
   width: 100%;
+}
+
+/*菜单*/
+.el-icon-location:before{
+  content: '';
+}
+
+.el-submenu__title span{
+  font-weight: bold;
+  color: #000;
+}
+
+.el-menu-item{
+  color: #333333;
+}
+
+.el-menu--inline{
+  background: #f9f9f9;
 }

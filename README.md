@@ -32,7 +32,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 # 支持多入口文件
 
-## 机构说明
+## 结构说明
 
 ```
 src
@@ -40,20 +40,25 @@ src
 		assets
 			css
 			images
-			js
+			js			// 存储一些公共js,正则等信息
 		components
 		mixin
+			constant	// 存储一些常量js
 		router
-		service
+		service			
+			model		// 数据模型
+			support		// 存储一些服务支持（请求地址，请求方式等）
 		store
 		view
-	projectSrc	// 项目对应文件
-		assets
-			css
-			images
-		view
-		main.js
-		app.vue
+	projectSrc	// 项目总文件
+		base			// 对应 base项目文件
+            assets
+                css
+                images
+            view
+            main.js
+            app.vue
+    	... 			// 对应 其他项目文件
 ```
 
 ## 配置修改
@@ -66,6 +71,7 @@ webpack.base.conf.js
 	根据变量及结构修改entry，动态找到main.js
 config.js
 	根据变量及结构修改build,动态打包到相应项目文件
+
 
 
 

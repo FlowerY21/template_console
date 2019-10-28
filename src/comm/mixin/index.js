@@ -1,5 +1,5 @@
 import {getFormKeys} from "comm/assets/js/common-utils";
-import SubmitText from "./constant/SubmitText";
+import SubmitText from "comm/service/model/SubmitText";
 
 let loading;
 const dialogMethods = {

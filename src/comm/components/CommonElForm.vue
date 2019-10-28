@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="model" :rules="rules" ref="model" :show-message="false" @validate="updateBtn">
+  <el-form :model="model" :rules="rules" ref="model" :show-message="true" @validate="updateBtn">
     <slot></slot>
     <el-button type="primary" @click="submit()" :disabled="!canSubmit"
                :class="{isLight:isLightBtn,overWidth:isOverWidth}">{{submitBtnText}}
@@ -10,7 +10,7 @@
 <script>
   import {submitMixin} from "comm/mixin";
   import {ergodicKeys} from "comm/assets/js/common-utils";
-  import SubmitText from "comm/mixin/constant/SubmitText";
+  import SubmitText from "comm/service/model/SubmitText";
 
   export default {
     name: "CommonElForm",
