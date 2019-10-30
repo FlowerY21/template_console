@@ -52,7 +52,8 @@
       },
       topForm: {
         type: Object,
-        default: () => {}
+        default: () => {
+        }
       },
       needSelect: {
         type: Boolean,
@@ -114,8 +115,9 @@
         },
         containerHeight: 0,
         page: {},
-        tableData:[],
-        isPage:false,
+        tableData: [],
+        isPage: false,
+        isReset: false,
       }
     },
     mixins: [loadMixin],
@@ -124,8 +126,8 @@
       this.page = this.$refs.commonTable.page;
       this.getList();
     },
-    computed:{
-      submitData(){
+    computed: {
+      submitData() {
         if (!this.topForm.time) {
           this.topForm.time = [];
         }
@@ -137,7 +139,7 @@
           size: this.page.pageSize,
         };
 
-        return {...this.searchData, ...params}
+        return this.isReset ? params : {...this.searchData, ...params}
       },
     },
     methods: {
@@ -145,24 +147,27 @@
         this.isPage = true;
         this.getList();
       },
-      getList(){
-        this.doLoad(this.submitService,this.submitData,res => {
+      getList() {
+        this.doLoad(this.submitService, this.submitData, res => {
           this.onSuccess(res);
         }, error => {
-          this.$emit('getListFail',error);
+          this.$emit('getListFail', error);
         })
       },
-      onSuccess(res){
+      onSuccess(res) {
         this.tableData = res.rows;
 
         this.page.currentPage = res.current;
         this.page.total = res.total;
         this.page.pageSize = res.size;
         this.isPage = false;
+        this.isReset = false;
       },
-      onReset(){
-        this.topForm.time = null;
+      onReset() {
+        this.$emit('onReset');
         this.isPage = false;
+        this.isReset = true;
+        this.topForm.time = null;
         this.getList();
       }
     }

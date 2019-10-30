@@ -1,5 +1,5 @@
 <template>
-    <common-search ref="commonSearch" :topForm="topForm" :submitService="submitService" :searchData="searchData">
+    <common-search ref="commonSearch" :topForm="topForm" :submitService="submitService" :searchData="searchData" @onReset="onReset">
       <span slot="formSlot">
         <el-form-item label="账号" prop="userName">
             <el-input type="text" maxlength="20" v-model="topForm.userName" placeholder="请输入账号"></el-input>
@@ -61,6 +61,14 @@
       deleteRow(index, rows) {
         rows.splice(index, 1);
       },
+      onReset(){
+        this.topForm = {
+          userName: '',
+          phoneNumber: '',
+          time: []
+        };
+
+      }
     }
   }
 </script>
