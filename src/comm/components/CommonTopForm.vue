@@ -9,6 +9,7 @@
 
 <script>
   import {submitMixin} from "comm/mixin";
+  import {ergodicKeys} from "comm/assets/js/common-utils";
   import SubmitText from "comm/service/model/SubmitText";
 
     export default {
@@ -37,20 +38,26 @@
         resetText:{
           type: String,
           default: '重置'
-        }
+        },
+        submitService: {
+          type: Function,
+          default: null
+        },
+        submitData: {
+          type: Object,
+          default: null
+        },
       },
       mixins: [submitMixin],
       methods: {
         submit: function () {
-          this.showLoading();
-          const params = this.submitData == null ? this.model : this.submitData;
+          const params = this.submitData == null ? this.topForm : this.submitData;
           ergodicKeys(params, key => {
             if (typeof params[key] == 'string') {
               params[key] = params[key].trim();
             }
           });
-          this.doValidAndSubmit('topForm', this.submitService, params, res => {
-            this.hideLoading();
+          this.doSubmit(this.submitService, params, res => {
             this.$emit("success", res);
           }, new SubmitText({
             failTitle: this.failTitle,
@@ -58,10 +65,12 @@
             successText: this.successText,
             failText: this.failText
           }), error => {
-            this.hideLoading();
             this.$emit("fail", error)
           });
         },
+        reset: function () {
+          this.$emit('reset')
+        }
       }
     }
 </script>

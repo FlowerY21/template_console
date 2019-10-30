@@ -91,7 +91,7 @@
         this.showSuccess('登录成功');
 
         this.setUser('userInfo');   // 存储用户信息
-        this.setToken('token');     // 存储token信息
+        this.setToken("token");     // 存储token信息
         this.saveAccount(new Account({  // 缓存登录信息30天
           i : this.formModel.userName,
           p : Base64.encode(this.formModel.passWord)

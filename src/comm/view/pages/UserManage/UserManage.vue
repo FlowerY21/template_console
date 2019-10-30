@@ -1,77 +1,67 @@
 <template>
-  <common-container>
-    <common-search :topForm="formModel">
+    <common-search ref="commonSearch" :topForm="topForm" :submitService="submitService" :searchData="searchData">
       <span slot="formSlot">
         <el-form-item label="账号" prop="userName">
-            <el-input type="text" maxlength="20" v-model="formModel.userName" placeholder="请输入账号"></el-input>
+            <el-input type="text" maxlength="20" v-model="topForm.userName" placeholder="请输入账号"></el-input>
         </el-form-item>
         <el-form-item label="电话" prop="phoneNumber">
-            <el-input type="text" maxlength="20" v-model="formModel.phoneNumber" placeholder="请输入电话"></el-input>
-        </el-form-item>
-        <el-form-item label="创建时间">
-          <el-date-picker
-            v-model="formModel.time"
-            type="daterange"
-            value-format="yyyy-MM-dd"
-            align="right"
-            unlink-panels
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :picker-options="pickerOptions">
-          </el-date-picker>
+            <el-input type="text" maxlength="11" v-model="topForm.phoneNumber" placeholder="请输入电话"></el-input>
         </el-form-item>
       </span>
+
+      <span slot="formTable">
+        <el-table-column prop="chnName" label="姓名" min-width="120"></el-table-column>
+        <el-table-column prop="chnName" label="电话" min-width="120"></el-table-column>
+        <el-table-column prop="chnName" label="市区"  min-width="120"></el-table-column>
+        <el-table-column prop="chnName" label="地址" min-width="120"></el-table-column>
+        <el-table-column prop="updateTime" label="时间" min-width="150"></el-table-column>
+        <el-table-column fixed="right" label="操作" min-width="120">
+          <template slot-scope="scope">
+            <el-button @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small">移除</el-button>
+          </template>
+        </el-table-column>
+      </span>
     </common-search>
-  </common-container>
 </template>
 
 <script>
-  import CommonContainer from 'comm/components/CommonContainer'
   import CommonSearch from 'comm/components/CommonSearch'
+  import PowerUserService from 'comm/service/PowerUserService'
+  import SelectUserManageData from 'comm/service/model/SelectUserManageData'
+  import {loadMixin} from 'comm/mixin'
 
   export default {
     name: "UserManage",
     components: {
-      CommonContainer,
       CommonSearch
     },
     data() {
       return {
-        formModel: {
+        topForm: {
           userName: '',
           phoneNumber: '',
           time: []
         },
-        pickerOptions: {
-          shortcuts: [{
-            text: '最近一周',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: '最近一年',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 365);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
-        }
+        submitService: PowerUserService.list,
+        isPage:false,
       }
     },
+    computed:{
+      searchData(){
+        const params = {
+          userName:this.topForm.userName,
+          phoneNumber:this.topForm.phoneNumber,
+        };
+
+        return params;
+      },
+    },
+    mixins: [loadMixin],
+    methods:{
+      deleteRow(index, rows) {
+        rows.splice(index, 1);
+      },
+    }
   }
 </script>
 

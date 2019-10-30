@@ -45,3 +45,27 @@
 .el-menu--inline{
   background: #f9f9f9;
 }
+
+/*表格*/
+.el-table .cell {
+  color: #000000;
+}
+
+.el-table th>.cell{
+  font-weight: bold;
+}
+
+.el-table .rowBlueClass {
+  background: #f0f9fd;
+}
+
+.el-table .rowGrayClass,
+.el-table .rowHeaderClass{
+  background: #F9F9F9;
+}
+
+.el-table td, .el-table th{
+  height: 40px;
+  padding: 0;
+  text-align: center;
+}

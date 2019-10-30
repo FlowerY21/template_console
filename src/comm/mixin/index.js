@@ -93,6 +93,14 @@ const validators = {
 };
 
 const loadMethods = Object.assign({}, dialogMethods, {
+  doLoad(func, data, onSuccess, onFail) {
+    func(data).then((data) => {
+      onSuccess && onSuccess(data);
+    }, (error) => {
+      this.showError(error.message);
+      onFail && onFail(error.resp);
+    })
+  },
   /**
    * 电话或银行卡加密
    * @type  1 => phone  2 => bankCard

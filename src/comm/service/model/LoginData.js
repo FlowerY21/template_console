@@ -1,7 +1,6 @@
-export default class Account {
-    constructor({i, p}) {
-        this.i = i || "";
-        this.p = p || "";
-        this.t = new Date().getTime();
-    }
+export default class LoginData {
+  constructor(userName, passWord) {
+    this.userName = userName || "";
+    this.passWord = passWord || "";
+  }
 }
