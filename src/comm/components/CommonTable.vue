@@ -34,35 +34,35 @@
     export default {
       name: "commontable",
       props:{
-        tableData:{
+        tableData:{             // 表格数据对象
           type: Array,
           default:() => []
         },
-        label: {
+        label: {                // 索引列表头文本
           type: String,
           default: '序号'
         },
-        needIndex: {
+        needIndex: {            // 是否需要索引列
           type: Boolean,
           default: true
         },
-        needFixed: {
+        needFixed: {            // 索引列是否固定
           type: Boolean,
           default: true
         },
-        needRowClass: {
+        needRowClass: {         // 是否需要表格行样式
           type: Boolean,
           default: true
         },
-        needHeaderClass: {
+        needHeaderClass: {      // 是否需要表格头样式
           type: Boolean,
           default: true
         },
-        isShow:{
+        isShow:{                // 是否需要分页器
           type:Boolean,
           default:true
         },
-        containerHeight:{
+        containerHeight:{       // 容器高度，用于计算表格高度
           type: Number,
           default: 0
         }

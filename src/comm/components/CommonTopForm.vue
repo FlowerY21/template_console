@@ -15,35 +15,35 @@
     export default {
       name: "commontopform",
       props: {
-        inline: {
+        inline: {               // 表单是否内联
           type: Boolean,
           default: true
         },
-        topForm: {
+        topForm: {              // 表单数据对象
           type: Object,
           default: () => {}
         },
-        needSelect:{
+        needSelect:{            // 是否需要按钮1
           type: Boolean,
           default: true
         },
-        needReset:{
+        needReset:{             // 是否需要按钮2
           type: Boolean,
           default: true
         },
-        selectText:{
+        selectText:{            // 按钮1文本
           type: String,
           default: '查询'
         },
-        resetText:{
+        resetText:{             // 按钮2文本
           type: String,
           default: '重置'
         },
-        submitService: {
+        submitService: {        // 表单提交请求
           type: Function,
           default: null
         },
-        submitData: {
+        submitData: {           // 请求参数
           type: Object,
           default: null
         },

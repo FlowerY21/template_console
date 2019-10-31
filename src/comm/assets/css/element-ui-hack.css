@@ -69,3 +69,12 @@
   padding: 0;
   text-align: center;
 }
+
+/*分页器*/
+.el-pagination{
+  padding: 0;
+}
+
+.el-pagination__sizes{
+  margin: 0;
+}

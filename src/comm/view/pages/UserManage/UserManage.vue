@@ -14,7 +14,7 @@
         <el-table-column prop="chnName" label="电话" min-width="120"></el-table-column>
         <el-table-column prop="chnName" label="市区"  min-width="120"></el-table-column>
         <el-table-column prop="chnName" label="地址" min-width="120"></el-table-column>
-        <el-table-column prop="updateTime" label="时间" min-width="150"></el-table-column>
+        <el-table-column prop="updateTime" label="时间" min-width="160"></el-table-column>
         <el-table-column fixed="right" label="操作" min-width="120">
           <template slot-scope="scope">
             <el-button @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small">移除</el-button>

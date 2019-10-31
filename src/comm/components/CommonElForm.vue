@@ -16,23 +16,23 @@
     name: "CommonElForm",
     mixins: [submitMixin],
     props: {
-      model: {
+      model: {          // 表单数据对象
         type: Object,
         default: {},
       },
-      rules: {
+      rules: {          // 表单验证规则
         type: Object,
         default: null,
       },
-      submitBtnText: {
+      submitBtnText: {  // 按钮1文本
         type: String,
         default: "确定",
       },
-      submitService: {
+      submitService: {  // 表单请求
         type: Function,
         default: null
       },
-      submitData: {
+      submitData: {     // 表单提交数据
         type: Object,
         default: null
       },
@@ -52,11 +52,11 @@
         type: String,
         default: null
       },
-      isLightBtn: {
+      isLightBtn: {     // 按钮是否默认高亮
         type: Boolean,
         default: false
       },
-      isOverWidth: {
+      isOverWidth: {    // 按钮是否100%
         type: Boolean,
         default: false
       },
