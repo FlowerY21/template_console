@@ -32,6 +32,8 @@
           });
           this.setUser(null);
           this.setToken(null);
+          this.setTabBarOn(null);
+          this.setTabBar(null);
           this.saveAccount(new Account({
             i : this.formModel.userName,
             p : ''
@@ -43,7 +45,9 @@
       ...mapActions({
         setUser: StorageService.User.setInfo,
         setToken: StorageService.User.setToken,
-        saveAccount: StorageService.User.saveAccount
+        saveAccount: StorageService.User.saveAccount,
+        setTabBar:StorageService.Tab.setTabBar,
+        setTabBarOn:StorageService.Tab.setTabBarOn,
       })
     }
   }

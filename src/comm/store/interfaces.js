@@ -4,8 +4,9 @@ export default {
     setToken: 'SET_TOKEN',  // 控制token
     saveAccount: 'SAVE_ACCOUNT',  // 保存数据
   },
-  TabBar: {
-
+  Tab: {
+    setTabBar: 'SET_TABBAR',      // tab列表
+    setTabBarOn: 'SET_TABBAR_ON'  // tab活动页
   },
   Reload: {
 

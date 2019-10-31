@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from 'comm/router/index'
-import DeployPramas from 'comm/mixin/constant/DeployPramas'
+import DeployParamas from 'comm/mixin/constant/DeployParamas'
 import store from 'comm/store'
 
 import ElementUI from 'element-ui';
@@ -18,7 +18,7 @@ let Base64 = require('js-base64').Base64;
 
 Vue.config.productionTip = false;
 
-document.title = DeployPramas[process.env.BRANCH_ENV].ProgramName + '后台管理系统';
+document.title = DeployParamas[process.env.BRANCH_ENV].ProgramName + '后台管理系统';
 
 
 

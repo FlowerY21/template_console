@@ -14,4 +14,12 @@ export default {
   [StorageService.User.saveAccount]({commit}, account) {
     commit(StorageService.User.saveAccount, LocalStorageDao.saveAccount(account));
   },
+
+  [StorageService.Tab.setTabBar]({commit}, tabBar) {
+    commit(StorageService.Tab.setTabBar, LocalStorageDao.saveTabBar(tabBar));
+  },
+
+  [StorageService.Tab.setTabBarOn]({commit}, tabBarOn) {
+    commit(StorageService.Tab.setTabBarOn, LocalStorageDao.saveTabBarOn(tabBarOn));
+  },
 }

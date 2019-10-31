@@ -12,6 +12,14 @@ const mutations = {
   [StorageService.User.saveAccount](state, account) {
     state.userAccount = account;
   },
+
+  [StorageService.Tab.setTabBar](state, tabBar) {
+    state.tabBar = tabBar.slice();
+  },
+
+  [StorageService.Tab.setTabBarOn](state, tabBarOn) {
+    state.tabBarOn = tabBarOn;
+  },
 };
 
 export default mutations;

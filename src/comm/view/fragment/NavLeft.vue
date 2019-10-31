@@ -10,7 +10,7 @@
           </i>
           <span>{{navs.permName}}</span>
         </template>
-        <el-menu-item :index="nav.index"  v-for = "(nav,second) in navs.children" :key = "second">{{nav.permName}}</el-menu-item>
+        <el-menu-item :index="nav.index"  v-for = "(nav,second) in navs.children" :key = "second" @click="addNavTab(nav.index,nav.permName)">{{nav.permName}}</el-menu-item>
       </el-submenu>
     </el-menu>
 
@@ -38,31 +38,31 @@
             index:'usermanage',
           }]
         },{
-          permName:'权限管理',
+          permName:'权限管理2',
           iconUrl:'https://memserver.oss-cn-huhehaote.aliyuncs.com/upload/0850da5ec79d45289ef542dfd7b7819e.png',
           index:'2',
           children:[{
-            permName:'用户管理',
+            permName:'用户管理2',
             iconUrl:'1',
-            index:'usermanage',
+            index:'usermanage2',
           }]
         },{
-          permName:'权限管理',
+          permName:'权限管理3',
           iconUrl:'https://memserver.oss-cn-huhehaote.aliyuncs.com/upload/0850da5ec79d45289ef542dfd7b7819e.png',
           index:'3',
           children:[{
-            permName:'用户管理',
+            permName:'用户管理3',
             iconUrl:'1',
-            index:'usermanage',
+            index:'usermanage3',
           }]
         },{
-          permName:'权限管理',
+          permName:'权限管理4',
           iconUrl:'https://memserver.oss-cn-huhehaote.aliyuncs.com/upload/0850da5ec79d45289ef542dfd7b7819e.png',
           index:'4',
           children:[{
-            permName:'用户管理',
+            permName:'用户管理4',
             iconUrl:'1',
-            index:'usermanage',
+            index:'usermanage4',
           }]
         },]
       }
@@ -77,8 +77,12 @@
       handleIndex(){
         this.$router.replace({
           name:'Index'
-        })
+        });
+        this.$emit('handleIndex')
       },
+      addNavTab(routerName,tabText){
+        this.$emit('addNavTab',routerName,tabText)
+      }
     },
   }
 </script>

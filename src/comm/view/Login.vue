@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import DeployPramas from 'comm/mixin/constant/DeployPramas'
+  import DeployParamas from 'comm/mixin/constant/DeployParamas'
   import CommonElForm from 'comm/components/CommonElForm'
   import StorageService from 'comm/store/interfaces'
   import Account from 'comm/service/model/Account'
@@ -46,7 +46,7 @@
     },
     data() {
       return {
-        ProgramName: DeployPramas[process.env.BRANCH_ENV].name,
+        ProgramName: DeployParamas[process.env.BRANCH_ENV].name,
         formModel: {
           userName: '',
           passWord: '',

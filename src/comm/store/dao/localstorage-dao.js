@@ -5,6 +5,8 @@ const Keys = {
   UserInfo:'__u__',
   UserToken:'__t__',
   UserAccount:'__a__',
+  TabBar:'__b__',
+  TabBarOn:'__on__',
 };
 
 const loadUserInfo = () => {
@@ -36,6 +38,23 @@ const saveAccount = (account) => {
   return Storage.set(Keys.UserAccount,account);
 };
 
+const loadTabBar = () => {
+  return Storage.session.get(Keys.TabBar,{});
+};
+
+const saveTabBar = (tabBar) => {
+  return Storage.session.set(Keys.TabBar,tabBar);
+};
+
+const loadTabBarOn = () => {
+  return Storage.session.get(Keys.TabBarOn,{});
+};
+
+const saveTabBarOn = (tabBar) => {
+  return Storage.session.set(Keys.TabBarOn,tabBar);
+};
+
+
 export default {
   loadUserInfo,
   saveUserInfo,
@@ -43,4 +62,8 @@ export default {
   saveUserToken,
   loadAccount,
   saveAccount,
+  loadTabBar,
+  saveTabBar,
+  loadTabBarOn,
+  saveTabBarOn,
 }

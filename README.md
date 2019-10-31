@@ -1,3 +1,7 @@
+---
+typora-root-url: C:\Users\FlowerY21\Desktop
+---
+
 # template_console
 
 > A Vue.js project
@@ -9,10 +13,10 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev：base(项目名称)
+npm run dev：base(项目名称)		
 
 # build for production with minification
-npm run build：base(项目名称)/all
+npm run build：base1(项目名称)/all
 
 # build for production and view the bundle analyzer report
 npm run build --report
@@ -44,6 +48,7 @@ src
 		components
 		mixin
 			constant	// 存储一些常量js
+				DeployParamas		// 开发配置参数***
 		router
 		service			
 			model		// 数据模型
@@ -64,14 +69,15 @@ src
 ## 配置修改
 
 prod.env.js
-	声明变量
+	声明变量 BRANCH_ENV
 package.json
 	通过cross-env控制变量
 webpack.base.conf.js
 	根据变量及结构修改entry，动态找到main.js
 config.js
 	根据变量及结构修改build,动态打包到相应项目文件
-
+DeployParamas.js
+	![1572508928315](/../AppData/Roaming/Typora/typora-user-images/1572508928315.png)
 
 
 

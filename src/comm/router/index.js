@@ -54,6 +54,18 @@ export default new Router({
           path:'usermanage',
           name:'usermanage',
           component:UserManage,
+        },{
+          path:'usermanage2',
+          name:'usermanage2',
+          component:UserManage,
+        },{
+          path:'usermanage3',
+          name:'usermanage3',
+          component:UserManage,
+        },{
+          path:'usermanage4',
+          name:'usermanage4',
+          component:UserManage,
         },
       ]
     }

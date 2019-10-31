@@ -12,7 +12,7 @@
             <nav-top @handleCollapse="handleCollapse"></nav-top>
           </el-header>
           <!--主要内容-->
-          <el-main clss="index-main" v-if="currentModel == 'tab'">
+          <el-main clss="index-main">
             <el-tabs v-model="editableTabsValue" type="card" @tab-remove="removeTab"  @tab-click="handleTab" style="height: 100%">
               <el-tab-pane
                 v-for="(item, index) in editableTabs"
@@ -29,13 +29,7 @@
               </div>
             </el-tabs>
           </el-main>
-          <el-main clss="index-main" v-if="currentModel == 'base'">
-            <div v-if="isRouterAlive" class="wrapper comm-pad">
-              <keep-alive>
-                <router-view></router-view>
-              </keep-alive>
-            </div>
-          </el-main>
+
         </el-container>
       </el-container>
     </div>
@@ -49,7 +43,6 @@
   import StorageService from 'comm/store/interfaces'
   import {mapActions, mapGetters} from 'vuex'
   import {dialogMixin} from 'comm/mixin'
-  import DeployParamas from 'comm/mixin/constant/DeployParamas'
 
   export default {
     name: "index",
@@ -70,7 +63,6 @@
           title: '首页',
           name: 'Index',
         },],
-        currentModel:DeployParamas[process.env.BRANCH_ENV].Model
       }
     },
     computed: {
