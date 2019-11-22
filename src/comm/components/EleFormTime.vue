@@ -9,7 +9,8 @@
       :range-separator="rangeSeparator"
       :start-placeholder="startPlaceholder"
       :end-placeholder="endPlaceholder"
-      :picker-options="pickerOptions">
+      :picker-options="pickerOptions"
+      @change="handleChange">
     </el-date-picker>
   </el-form-item>
 </template>
@@ -38,10 +39,17 @@
         type: String,
         default: '至'
       },
+      timeValue:{
+        type: Array,
+        default: () => []
+      },
+    },
+    model: {
+      prop: 'timeValue',
+      event: 'change'
     },
     data() {
       return {
-        time:'',
         pickerOptions: {
           shortcuts: [{
             text: '最近一周',
@@ -69,8 +77,14 @@
             }
           }]
         },
+        time: this.timeValue
       }
     },
+    methods:{
+      handleChange(value){
+        this.$emit('timeValue',value)
+      }
+    }
   }
 </script>
 
