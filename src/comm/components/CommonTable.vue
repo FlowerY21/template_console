@@ -11,6 +11,7 @@
       <!--分页器-->
       <el-col :span="24">
         <el-pagination
+          ref="pagination"
           v-if="isShow"
           class="pagination-size"
           @size-change="handleSizeChange"
@@ -79,7 +80,7 @@
       },
       computed:{
         tableHeight(){
-          return this.containerHeight - 100;
+          return this.containerHeight;
         }
       },
       methods:{

@@ -7,6 +7,7 @@
         <el-form-item label="电话" prop="phoneNumber">
             <el-input type="text" maxlength="11" v-model="topForm.phoneNumber" placeholder="请输入电话"></el-input>
         </el-form-item>
+        <ele-form-time></ele-form-time>
       </span>
 
       <span slot="formTable">
@@ -26,6 +27,7 @@
 
 <script>
   import CommonSearch from 'comm/components/CommonSearch'
+  import EleFormTime from 'comm/components/EleFormTime'
   import PowerUserService from 'comm/service/PowerUserService'
   import SelectUserManageData from 'comm/service/model/SelectUserManageData'
   import {loadMixin} from 'comm/mixin'
@@ -33,7 +35,7 @@
   export default {
     name: "UserManage",
     components: {
-      CommonSearch
+      CommonSearch, EleFormTime
     },
     data() {
       return {

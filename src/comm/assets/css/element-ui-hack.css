@@ -38,6 +38,12 @@
   background: #409eff;
 }
 
+.el-tabs--card>.el-tabs__header,
+.el-tabs__content{
+  border-radius: 4px;
+}
+
+
 
 
 .el-header {
@@ -122,3 +128,5 @@
   width: calc(100% - 40px);
   right: 20px;
 }
+
+

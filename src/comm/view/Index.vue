@@ -77,7 +77,8 @@
       ...mapGetters(['userToken', 'tabBar', 'tabBarOn'])
     },
     mounted(){
-      if (JSON.parse(JSON.stringify(this.tabBarOn)) != null && JSON.parse(JSON.stringify(this.tabBarOn)) !='') {
+
+      if (JSON.parse(JSON.stringify(this.tabBarOn)) != null && JSON.parse(JSON.stringify(this.tabBarOn)) =='string') {
         this.editableTabs = this.tabBar;
         this.editableTabsValue = this.tabBarOn;
       }
