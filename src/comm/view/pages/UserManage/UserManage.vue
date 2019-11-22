@@ -7,7 +7,7 @@
         <el-form-item label="电话" prop="phoneNumber">
             <el-input type="text" maxlength="11" v-model="topForm.phoneNumber" placeholder="请输入电话"></el-input>
         </el-form-item>
-        <ele-form-time></ele-form-time>
+        <ele-form-time v-model="topForm.time"></ele-form-time>
       </span>
 
       <span slot="formTable">
@@ -50,9 +50,14 @@
     },
     computed:{
       searchData(){
+        // if (!this.topForm.time) {
+        //   this.topForm.time = [];
+        // }
         const params = {
           userName:this.topForm.userName,
           phoneNumber:this.topForm.phoneNumber,
+          startTime: this.topForm.time[0] ? this.topForm.time[0] : '',
+          endTime: this.topForm.time[1] ? this.topForm.time[1] : '',
         };
 
         return params;

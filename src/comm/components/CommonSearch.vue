@@ -82,19 +82,16 @@
     },
     mixins: [loadMixin],
     mounted() {
-      this.containerHeight = this.$refs.commonContainer.$el.clientHeight - this.$refs.commonTopForm.$el.clientHeight -100;
-      this.page = this.$refs.commonTable.page;
-      this.getList();
+      this.$nextTick(() => {
+        this.containerHeight = this.$refs.commonContainer.$el.clientHeight - this.$refs.commonTopForm.$el.clientHeight -100;
+
+        this.page = this.$refs.commonTable.page;
+        this.getList();
+      })
     },
     computed: {
       submitData() {
-        if (!this.topForm.time) {
-          this.topForm.time = [];
-        }
-
         const params = {
-          startTime: this.topForm.time[0] ? this.topForm.time[0] : '',
-          endTime: this.topForm.time[1] ? this.topForm.time[1] : '',
           current: this.isPage ? this.page.currentPage : 1,
           size: this.page.pageSize,
         };
