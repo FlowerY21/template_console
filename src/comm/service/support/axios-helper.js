@@ -5,6 +5,7 @@ import store from 'comm/store'
 import router from 'comm/router'
 import ElementUI from 'element-ui';
 import {encrypt, urlEncode, objKeySort} from "comm/assets/js/common-utils";
+import {Loading} from 'element-ui';
 
 export const Host = Server[process.env.NODE_ENV];
 
@@ -22,9 +23,9 @@ const RespCodes = {
 };
 // 公共参数
 const CommonParams = {
-  tatId:'144a3ff3da0fbc619cc305a32d4e857c',
+  tatId: '144a3ff3da0fbc619cc305a32d4e857c',
   modifierId: 34,
-  serverType:1,
+  serverType: 1,
 
 };
 
@@ -44,10 +45,16 @@ export const fillData = (data) => {
 };
 
 export function post(url, port, data, needToken) {
-  return new Promise((resolve, reject)=>{
-    axios.post(Host + port + '/' + url, fillData(data),{
+  let loadingInstance = Loading.service({
+    lock: true,
+    text: '加载中...',
+    spinner: 'el-icon-loading',
+    background: 'rgba(0, 0, 0, 0.7)'
+  });
+  return new Promise((resolve, reject) => {
+    axios.post(Host + port + '/' + url, fillData(data), {
       headers: Object.assign({
-        "Content-Type":"application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded"
       }, needToken ? {token: getToken()} : {}),
       transformRequest: [
         function (data) {
@@ -59,14 +66,15 @@ export function post(url, port, data, needToken) {
         }
       ],
     }).then(resp => {
-      // 视情况修改
+        loadingInstance.close();
+        // 视情况修改
         if (RespStatus.Success != resp.status || (!resp.data && "" != resp.data)
           || RespCodes.Success != resp.data.respCode || (!resp.data.contents && "" != resp.data.contents)
           || (resp.data.contents.optStatus && RespCodes.Success != resp.data.contents.optStatus)) {
           console.log('[Post请求-服务端返回错误响应]', resp);
-          if (resp.data.respCode == '0003'){
+          if (resp.data.respCode == '0003') {
             router.replace({
-              name:'Login'
+              name: 'Login'
             });
 
             ElementUI.Message.closeAll();
@@ -79,16 +87,22 @@ export function post(url, port, data, needToken) {
         }
         resolve(resp.data.contents);
       }, error => {
+        loadingInstance.close();
         console.log('[Post请求-请求失败]', error);
         reject({resp: error, message: shelling(error)});
       }
-    )
+    ).catch((e) => {
+      loadingInstance.close();
+      console.log('[Post请求-发生异常]', e);
+      return Promise.reject(e);
+    });
   })
 }
 
 export function outter_post(url, post, data) {
   return post(url, post, data, false);
 }
+
 // 视情况修改
 export const shelling = (resp) => {
   const defaultMsg = '未知错误';
