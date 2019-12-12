@@ -39,7 +39,7 @@
         return strArr.join(".");
     };
 })();
-//
-// (function(){
-//     window.baseRem = Math.min(Math.max(document.documentElement.clientWidth || window.innerWidth, 320), 750) / 7.5
-// })();
+
+(function(){
+    window.baseRem = Math.min(Math.max(document.documentElement.clientWidth || window.innerWidth, 320), 750) / 7.5
+})();

@@ -84,7 +84,6 @@
     mounted() {
       this.$nextTick(() => {
         this.containerHeight = this.$refs.commonContainer.$el.clientHeight - this.$refs.commonTopForm.$el.clientHeight -100;
-
         this.page = this.$refs.commonTable.page;
         this.getList();
       })
