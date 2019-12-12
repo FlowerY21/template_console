@@ -50,9 +50,6 @@
     },
     computed:{
       searchData(){
-        // if (!this.topForm.time) {
-        //   this.topForm.time = [];
-        // }
         const params = {
           userName:this.topForm.userName,
           phoneNumber:this.topForm.phoneNumber,
